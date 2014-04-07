@@ -2,6 +2,8 @@ package com.mnclimbingcoop.vote
 
 class Vote {
 
+    static final String CSV_HEADER = 'member_id, certified, liz, aaron, jim, jake, logan, writeIn\n'
+
     static belongsTo = [ member: Member ]
 
     Boolean certified = false

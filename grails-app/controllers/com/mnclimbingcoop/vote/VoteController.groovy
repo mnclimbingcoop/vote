@@ -8,8 +8,6 @@ class VoteController {
 
         Map model = [ seats: seats, member: member ]
 
-        printVotes()
-
         return model
     }
 
@@ -39,20 +37,5 @@ class VoteController {
         }
 
         redirect(action:'index', id: member.voteHash)
-    }
-
-    private void printVotes() {
-        println "Votes:"
-        println "================"
-        Vote.list().each{ vote ->
-            println "Voter: ${vote.member?.name}"
-            println " * certified: ${vote.certified}"
-            println " * liz: ${vote.liz}"
-            println " * aaron: ${vote.aaron}"
-            println " * jim: ${vote.jim}"
-            println " * jake: ${vote.jake}"
-            println " * logan: ${vote.logan}"
-            println " * writeIn: ${vote.writeIn}"
-        }
     }
 }

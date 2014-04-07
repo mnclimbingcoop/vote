@@ -12,8 +12,8 @@ class AdminController {
 
     def votes() {
         export('votes') { out ->
-            out << "member_id, certified, certified, liz, aaron, jim, jake, logan, writeIn\n"
-            Votes.list().each{ v -> out << v.toCsvRecord() + "\n" }
+            out << Vote.CSV_HEADER
+            Vote.list().each{ v -> out << v.toCsvRecord() + "\n" }
         }
     }
 
@@ -37,7 +37,7 @@ class AdminController {
 
     private exportMembers() {
         export('members') { out ->
-            out << "member_id,full_name,email,member_since,vote_key,voting_url,voted\n"
+            out << Member.CSV_HEADER
             Member.list().each{ m -> 
                 if (!m.admin && m.memberSince) { out << m.toCsvRecord() + "\n" }
             }

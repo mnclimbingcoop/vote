@@ -7,6 +7,8 @@ class Member {
 
     static final String BASE_URL = 'http://vote.mnclimbingcoop.com'
 
+    static final String CSV_HEADER = 'member_id,full_name,email,member_since,vote_key,voting_url,voted\n'
+
     String memberNumber
     String name
     String email
@@ -22,10 +24,10 @@ class Member {
         email(nullable:true)
     }
 
-    LocalDate getVoted() { return vote?.dateCreated }
+    Date getVoted() { return vote?.dateCreated }
 
     String toCsvRecord() {
-        String votingUrl = BASE_URL + '/?id=' + voteHash
+        String votingUrl = BASE_URL + '/ballot/' + voteHash
         return [ memberNumber, name, email, memberSince, voteHash, votingUrl, voted ].join(',')
     }
 
