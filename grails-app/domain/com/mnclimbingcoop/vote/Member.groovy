@@ -35,7 +35,7 @@ class Member {
     }
 
     String getAdminUrl() {
-        if (admin) { return BASE_URL + '/admin/?id=' }
+        if (admin) { return BASE_URL + '/admin/?id=' + voteHash }
     }
 
     String toString() {
