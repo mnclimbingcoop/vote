@@ -51,7 +51,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
 
-        build ":tomcat:$grailsVersion"
+        build ":jetty:2.0.3"
 
         runtime ":database-migration:1.3.2"
 
