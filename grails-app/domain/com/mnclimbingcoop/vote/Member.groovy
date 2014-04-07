@@ -5,6 +5,8 @@ import org.joda.time.LocalDate
 
 class Member {
 
+    static final String BASE_URL = 'http://vote.mnclimbingcoop.com'
+
     String memberNumber
     String name
     String email
@@ -16,14 +18,24 @@ class Member {
     static constraints = {
         vote(nullable: true)
         memberSince(nullable: true)
+        memberNumber(unique: true)
         email(nullable:true)
     }
 
     LocalDate getVoted() { return vote?.dateCreated }
 
     String toCsvRecord() {
-        String votingUrl = 'http://vote.mnclimbingcoop.com/vote/?id=' + voteHash
+        String votingUrl = BASE_URL + '/?id=' + voteHash
         return [ memberNumber, name, email, memberSince, voteHash, votingUrl, voted ].join(',')
+    }
+
+    String getVotingUrl() {
+        if (admin) { return null }
+        return BASE_URL + '/?id=' + voteHash
+    }
+
+    String getAdminUrl() {
+        if (admin) { return BASE_URL + '/admin/?id=' }
     }
 
     String toString() {
