@@ -8,6 +8,8 @@ class UrlMappings {
         }
 
     "/"(controller: 'vote', action:'index')
+    "/ballot/$id?"(controller: 'vote', action:'index')
+    "/vote"(controller: 'vote', action:'vote')
     "500"(view:'/error')
     }
 }
